@@ -9,7 +9,7 @@ def display_digit_features(weights, bias):
     """Visualizes a set of weight vectors for each digit. Assumes that you are passing
        in a numpy array with 10 columns and numFeatures rows. Depending on how you
        implemented your Perceptron weights, you might need to write another helper
-       function to get your weights into this format. 
+       function to get your weights into this format.
 
        Do not modify this code."""
     feature_matrices = []
@@ -19,7 +19,7 @@ def display_digit_features(weights, bias):
     for i in range(10):
         plt.subplot(2, 5, i+1)
         plt.imshow(feature_matrices[i], cmap='gray')
-        
+
     plt.show()
 
 def apply_bias(samples):
@@ -36,7 +36,7 @@ def simple_image_featurization(image):
         width of the image, and h is the height."""
 
     """YOUR CODE HERE"""
-    raiseNotDefined()
+    return np.array(image.getPixels()).flatten("F")
 
 def zero_one_loss_ss(classifier, sample, label):
     """
@@ -80,14 +80,14 @@ def convert_perceptron_weights_to_2D_array_with_ten_columns(p):
     """p: A Perceptron.
 
     Returns a numpy array with 10 columns and 784 rows if bias is false,
-    and 785 rows if bias is true. 
+    and 785 rows if bias is true.
 
-    This function is intended to convert your Perceptron's internal 
-    representation of its weight vector into the format required by 
+    This function is intended to convert your Perceptron's internal
+    representation of its weight vector into the format required by
     display_digit_features.
 
     If your Perceptron already stores weights in this exact format, then this
-    function is not necessary. If necessary, this function could be as simple as 
+    function is not necessary. If necessary, this function could be as simple as
     transposing your internal representation, or it could be as complicated as
     having to iterate through some kind of dictionary.
 
