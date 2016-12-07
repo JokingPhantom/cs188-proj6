@@ -1,6 +1,7 @@
 import numpy as np
 import perceptron
 import samples
+import random
 import data_classification_utils as dcu
 from util import raiseNotDefined
 
@@ -38,9 +39,11 @@ raw_training_data, featurized_training_data, training_labels = get_perceptron_tr
 raw_test_data, featurized_test_data, test_labels = get_perceptron_test_data()
 
 """YOUR CODE HERE"""
-
-training_accuracy = None
-test_accuracy = None
+classifier = perceptron.Perceptron(set(training_labels), len(featurized_training_data[0]))
+for i in range(0, num_times_to_train): 
+	classifier.train(featurized_training_data, training_labels)
+training_accuracy = 100*(1-dcu.zero_one_loss(classifier, featurized_training_data, training_labels))
+test_accuracy = 100*(1-dcu.zero_one_loss(classifier, featurized_test_data, test_labels))
 print('Final training accuracy: ' + str(training_accuracy) + '% correct')
 
 print("Test accuracy: " + str(test_accuracy) + '% correct')
