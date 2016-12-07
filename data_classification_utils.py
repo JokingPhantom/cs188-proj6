@@ -48,9 +48,9 @@ def zero_one_loss_ss(classifier, sample, label):
 
     """YOUR CODE HERE"""
     test_label = classifier.classify(sample)
-    if label == test_label: 
+    if label == test_label:
         return 0.0
-    else: 
+    else:
         return 1.0
     raiseNotDefined()
 
@@ -65,16 +65,16 @@ def zero_one_loss(classifier, samples, labels):
     65 out of 100 samples right, this function should return 0.35."""
 
     """YOUR CODE HERE"""
-    num_wrong = 0 
-    i = 0 
-    while i <= len(samples)-1: 
+    num_wrong = 0
+    i = 0
+    while i <= len(samples)-1:
         test_label = classifier.classify(samples[i])
         if test_label == labels[i]:
             i += 1
-            continue 
-        else: 
-            i += 1 
-            num_wrong += 1 
+            continue
+        else:
+            i += 1
+            num_wrong += 1
     return float(num_wrong)/len(samples)
     raiseNotDefined()
 
@@ -89,7 +89,7 @@ def convert_weight_vector_to_matrix(weight_vector, w, h, bias):
     weight vector. Ignore the bias if there is one"""
 
     """YOUR CODE HERE"""
-    raiseNotDefined()
+    return np.reshape(np.array(weight_vector), (h, w))
 
 
 def convert_perceptron_weights_to_2D_array_with_ten_columns(p):
@@ -118,4 +118,4 @@ def convert_perceptron_weights_to_2D_array_with_ten_columns(p):
            [ 0.97893816,  0.02660188, ..., 0.16953317],
            [ 0.99322359,  0.89868266, ..., 0.69822413]])
     """
-    raiseNotDefined()
+    return np.array([p.weights[x] for x in p.weights]).transpose()

@@ -24,8 +24,6 @@ class Perceptron(object):
         """YOUR CODE HERE"""
         vector = util.Counter()
         for category in self.categories:
-            # print(self.weights[category])
-            #print(sample)
             vector[category] = self.weights[category].dot(sample)
         return vector.argMax()
 

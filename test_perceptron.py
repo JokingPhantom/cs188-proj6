@@ -29,8 +29,8 @@ if you want a bias, then apply that bias to your data, then create a perceptron 
 
 Next, train that perceptron on the entire set of training data num_times_to_train times on num_train_examples.
 
-Finally, use the zero_one_loss defined in data_classification_utils to find the 
-final accuracy on both the training set and the test set, assigning them to the 
+Finally, use the zero_one_loss defined in data_classification_utils to find the
+final accuracy on both the training set and the test set, assigning them to the
 variables training_accuracy and test_accuracy respectively"""
 
 
@@ -40,10 +40,12 @@ raw_test_data, featurized_test_data, test_labels = get_perceptron_test_data()
 
 """YOUR CODE HERE"""
 classifier = perceptron.Perceptron(set(training_labels), len(featurized_training_data[0]))
-for i in range(0, num_times_to_train): 
+for i in range(0, num_times_to_train):
 	classifier.train(featurized_training_data, training_labels)
 training_accuracy = 100*(1-dcu.zero_one_loss(classifier, featurized_training_data, training_labels))
 test_accuracy = 100*(1-dcu.zero_one_loss(classifier, featurized_test_data, test_labels))
 print('Final training accuracy: ' + str(training_accuracy) + '% correct')
 
 print("Test accuracy: " + str(test_accuracy) + '% correct')
+weights = dcu.convert_perceptron_weights_to_2D_array_with_ten_columns(classifier)
+dcu.display_digit_features(weights, bias)
